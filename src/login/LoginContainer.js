@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm.js";
+import {url} from '../Data/urlMapper'
 const axios = require("axios");
 const FormValidators = require("./validate");
 const validateLoginForm = FormValidators.validateLoginForm;
@@ -19,7 +20,6 @@ class LoginContainer extends Component {
       type: "password",
     };
 
-    this.pwMask = this.pwMask.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
     this.validateForm = this.validateForm.bind(this);
@@ -52,7 +52,7 @@ class LoginContainer extends Component {
     console.log("Thid id dubmit form")
     var params = { username: user.usr, password: user.pw};
     axios
-      .post("https://ouramazingserver.com/api/Login/submit", params)
+      .post(url.login, params)
       .then(res => {
         console.log("Res recived")
         if (res.data.success === true) {
@@ -94,15 +94,7 @@ class LoginContainer extends Component {
     }
   }
 
-  pwMask(event) {
-    event.preventDefault();
-    this.setState(state =>
-      Object.assign({}, state, {
-        type: this.state.type === "password" ? "input" : "password",
-        btnTxt: this.state.btnTxt === "show" ? "hide" : "show"
-      })
-    );
-  }
+
 
   render() {
     return (
@@ -115,7 +107,6 @@ class LoginContainer extends Component {
           user={this.state.user}
           btnTxt={this.state.btnTxt}
           type={this.state.type}
-          pwMask={this.pwMask}
         />
       </div>
     );

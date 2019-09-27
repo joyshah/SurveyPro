@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm.js";
 import {url} from '../Data/urlMapper'
 const axios = require("axios");
-const FormValidators = require("./validate");
+const FormValidators = require("../CommonCode/validate");
 const validateLoginForm = FormValidators.validateLoginForm;
-const zxcvbn = require("zxcvbn");
 
 class LoginContainer extends Component {
   constructor(props) {

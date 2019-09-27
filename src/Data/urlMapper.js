@@ -1,8 +1,8 @@
 var pre = "api/"
-var mid = "v1/"
+var midAuth = "v1/auth/"
 
 export var url={
-login:pre+mid+'login',
-signup:pre+mid+'login'
+login:pre+midAuth+'signin',
+signup:pre+midAuth+'signup'
 }
 

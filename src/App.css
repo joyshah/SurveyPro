@@ -1,22 +1,62 @@
-.App {
-  text-align: center;
+.mainHEad{
+  position: absolute;
+width: 100%;
+height:100%;
+/* background-color:blue; */
+background-image: url("/back1.png");
+text-align: center;
+font-size:200%;
+font-weight: 500;
+
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover;
+
+display: flex;
+align-content: space-between;
+flex-flow: column;
+flex-direction: column;
+color: aliceblue;
 }
 
-.App-logo {
-  height: 40vmin;
+.guestDiv{
+  position: absolute;
+height:20%;
+width:25%;
+margin-left: 6%;
+/* background-color: bisque; */
+border-radius:40px;
+margin-top: 10%;
+vertical-align: middle;
+opacity: .7;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.clientDiv{
+  opacity: .7;
+  position: absolute;
+  height:20%;
+width:25%;  
+margin-top: 10%;
+margin-left:39%;
+border-radius:40px;
+/* background-color: green; */
+
+}
+.signUp{
+  opacity: .7;
+  position: absolute;
+  margin-right: 10%;
+  margin-top: 10%;
+  height:20%;
+  margin-left:70%;
+width:25%;
+border-radius:40px;
+/* background-color: orangered; */
+
 }
 
-.App-link {
-  color: #09d3ac;
+.guestDiv:hover,.clientDiv:hover,.signUp:hover{
+  background-color:white;
+  opacity: .8;
 }

@@ -14,9 +14,13 @@ class App extends Component{
   }
   render(){
     return(
-      <div>
-        This is main element
+      <div className="mainHEad">
+        Welcome To The Survey Pro
+        <button className="guestDiv">Guest Login</button>
+        <button className="clientDiv">User Login</button>
+        <button className="signUp">SignUp</button>
       </div>
+      
     )
   }
 }

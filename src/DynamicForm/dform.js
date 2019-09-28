@@ -76,8 +76,22 @@ export default class DynamicFormComponent extends Component {
                     <label htmlFor={field.key}>
                         {field.label}
                     </label>
-                    <input {...field.props} name="nar" type={field.type}>
-                    </input>
+                    {field.ans_opts.map(opt => <div>{opt}</div>)}
+                    {/* {
+                                                    field.ans_opt.map((opt)=>{
+                                                        return(
+                                                            <div>
+                                                                This is alternate text
+                                                            </div>
+                                                        )
+                                                        })
+                        // field.type==='text' || field.type == 'number'? (<input {...field.props} name="nar" type={field.type}/>) : 
+
+
+                            
+                                               
+                    } */}
+                    
                 </div>
             )
         })
@@ -120,14 +134,10 @@ export default class DynamicFormComponent extends Component {
                 {/* Dynamic Right Now */}
                 <div className="DynamicRight">
                     <div className='rightHead'>{title}</div>
-
                     <div className="questionDiv">
                     <div className="questionHead">Response Type</div>
-
                     </div>
-
                     <hr/>
-
                     <div className="questionDiv">
                         <div className="questionHead">Question</div>
                         <div className="questionBody">

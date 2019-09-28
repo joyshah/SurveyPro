@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm.js";
 import {url} from '../Data/urlMapper'
+import Dashboard from  '../ClientDashboard/Dashboard/Dashboard'
 const axios = require("axios");
 const FormValidators = require("../CommonCode/validate");
 const validateLoginForm = FormValidators.validateLoginForm;
@@ -23,7 +24,6 @@ class LoginContainer extends Component {
     this.submitLogin = this.submitLogin.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.pwHandleChange = this.pwHandleChange.bind(this);
-    this.nevigateToSignUp = this.nevigateToSignUp.bind(this);
   }
 
   handleChange(event) {
@@ -53,12 +53,12 @@ class LoginContainer extends Component {
     var params = { username: user.usr, password: user.pw};
     console.log("Sending this",params)
     var headerToken= {
+      method:"post",
       'headers': {
         'Authorization': 'Bearer '+ localStorage.token
       }}
       console.log("header token is ",headerToken)
-    axios
-    .post(url.hello, headerToken)
+    fetch(url.hello, headerToken)
       .then((res) => {
         console.log("Res recived",res)
         
@@ -73,7 +73,7 @@ class LoginContainer extends Component {
           this.setState({
             errors: { message: res.data.message }
           });
-          this.props.history.replace('/')
+          this.props.history.push('/client/dashboard')
         
       })
       .catch(err => {
@@ -105,9 +105,6 @@ class LoginContainer extends Component {
     }
   }
 
-  nevigateToSignUp = ()=>{
-    this.props.history.replace('/signup')
-  }
 
 
   render() {
@@ -123,7 +120,6 @@ class LoginContainer extends Component {
           user={this.state.user}
           btnTxt={this.state.btnTxt}
           type={this.state.type}
-          signup={this.nevigateToSignUp}
         />
       </div>
     );

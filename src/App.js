@@ -29,7 +29,7 @@ class App extends Component{
 
     return(
       <div className="mainHEad">
-        Welcome To The Survey Pro
+     
         <button onClick={this.guestLogin}  className="guestDiv">Guest Login</button>
         <button onClick={this.userLogin} className="clientDiv">User Login</button>
         <button onClick={this.signUp} className="signUp">SignUp</button>

@@ -23,6 +23,7 @@ class LoginContainer extends Component {
     this.submitLogin = this.submitLogin.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.pwHandleChange = this.pwHandleChange.bind(this);
+    this.nevigateToSignUp = this.nevigateToSignUp.bind(this);
   }
 
   handleChange(event) {
@@ -72,7 +73,7 @@ class LoginContainer extends Component {
           this.setState({
             errors: { message: res.data.message }
           });
-          this.props.history.push('/')
+          this.props.history.replace('/')
         
       })
       .catch(err => {
@@ -104,6 +105,9 @@ class LoginContainer extends Component {
     }
   }
 
+  nevigateToSignUp = ()=>{
+    this.props.history.replace('/signup')
+  }
 
 
   render() {
@@ -119,6 +123,7 @@ class LoginContainer extends Component {
           user={this.state.user}
           btnTxt={this.state.btnTxt}
           type={this.state.type}
+          signup={this.nevigateToSignUp}
         />
       </div>
     );

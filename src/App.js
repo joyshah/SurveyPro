@@ -13,8 +13,8 @@ class App extends Component{
     super(props)
   }
 
-   guestLogin(){
-    this.props.history.push('/guest')
+   guestLogin = ()=>{
+    this.props.history.push('/dynamic')
   }
    userLogin = ()=>{
     console.log("This is user login")

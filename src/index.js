@@ -8,8 +8,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import LoginComponent from './login/loginMain'
 import SignUpComponent from './signup/signUpMain'
-import DynamicFormComponent from './DynamicForm/dform'
-import { withRouter } from 'react-router'
+import DynamicMain from './DynamicForm/dynamicMain'
+
 // import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Route exact path = "/" component = {App} />
     <Route exact path = "/login" component = {LoginComponent} />
     <Route path = "/signup" component = {SignUpComponent} />
-    <Route path = "/dynamic" component = {DynamicFormComponent} />
+    <Route path = "/dynamic" component = {DynamicMain} />
 </Router>, 
     document.getElementById('root'));
 

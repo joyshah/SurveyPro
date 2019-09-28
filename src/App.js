@@ -12,13 +12,27 @@ class App extends Component{
   constructor(props){
     super(props)
   }
-  render(){
+
+   guestLogin(){
+    this.props.history.push('/guest')
+  }
+   userLogin = ()=>{
+    console.log("This is user login")
+    this.props.history.push('/login')
+  }
+   signUp = ()=>{
+    this.props.history.push('/signup')
+  }
+
+  render=()=>{
+   console.log("First prp",this.props)
+
     return(
       <div className="mainHEad">
         Welcome To The Survey Pro
-        <button className="guestDiv">Guest Login</button>
-        <button className="clientDiv">User Login</button>
-        <button className="signUp">SignUp</button>
+        <button onClick={this.guestLogin}  className="guestDiv">Guest Login</button>
+        <button onClick={this.userLogin} className="clientDiv">User Login</button>
+        <button onClick={this.signUp} className="signUp">SignUp</button>
       </div>
       
     )

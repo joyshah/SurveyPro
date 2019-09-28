@@ -52,12 +52,12 @@ class LoginContainer extends Component {
     var params = { username: user.usr, password: user.pw};
     console.log("Sending this",params)
     var headerToken= {
-      method:"post",
       'headers': {
         'Authorization': 'Bearer '+ localStorage.token
       }}
       console.log("header token is ",headerToken)
-    fetch(url.hello, headerToken)
+    axios
+    .post(url.hello, headerToken)
       .then((res) => {
         console.log("Res recived",res)
         
@@ -76,7 +76,6 @@ class LoginContainer extends Component {
         
       })
       .catch(err => {
-        this.props.history.push('/')
         console.log("Sign up data submit error: ", err);
       });
   }

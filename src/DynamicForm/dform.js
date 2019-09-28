@@ -9,11 +9,14 @@ export default class DynamicFormComponent extends Component {
     state = { selectedKey: 0 }
 
 
-    componentWillMount() {
+    componentDidMount() {
+        console.log("Prpos in forms Modal",this.props)
         this.setState(
-            { formModel: this.props.model || {} }
+            {...this.state,
+            surveyData:this.props.surveyData}
         )
     }
+
 
 
     submitEventHandler(event) {
@@ -65,7 +68,7 @@ export default class DynamicFormComponent extends Component {
 
     renderForm() {
         console.log("This is model Object", this.props.model)
-        var model = this.state.formModel
+        var model = this.state.surveyData
         var formUI = model.map((field) => {
             return (
                 <div key={field.key} className="fieldDiv">
@@ -76,21 +79,17 @@ export default class DynamicFormComponent extends Component {
                     <label htmlFor={field.key}>
                         {field.label}
                     </label>
-                    {field.ans_opts.map(opt => <div>{opt}</div>)}
-                    {/* {
-                                                    field.ans_opt.map((opt)=>{
-                                                        return(
-                                                            <div>
-                                                                This is alternate text
-                                                            </div>
-                                                        )
-                                                        })
-                        // field.type==='text' || field.type == 'number'? (<input {...field.props} name="nar" type={field.type}/>) : 
-
-
+                    {
+                        field.type==='text' || field.type == 'number'? (<input {...field.props} name="nar" type={field.type}/>) : (<div>
+                            
+                            {
+                                field.ans_opts.map((opt)=>{return opt})
+                            }
+                            
+                            </div>)
                             
                                                
-                    } */}
+                    }
                     
                 </div>
             )
@@ -111,6 +110,7 @@ export default class DynamicFormComponent extends Component {
 
 
     render() {
+        console.log("Current state at start of render",this.state)
         let title = this.props.title || "Dynamic Form"
         return (
             <div className="dynamicPage">
@@ -132,7 +132,7 @@ export default class DynamicFormComponent extends Component {
                 </div>
 
                 {/* Dynamic Right Now */}
-                <div className="DynamicRight">
+                {/* <div className="DynamicRight">
                     <div className='rightHead'>{title}</div>
                     <div className="questionDiv">
                     <div className="questionHead">Response Type</div>
@@ -145,7 +145,7 @@ export default class DynamicFormComponent extends Component {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
             </div>
         )
     }

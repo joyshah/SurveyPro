@@ -50,22 +50,33 @@ class LoginContainer extends Component {
   submitLogin(user) {
     console.log("Thid id dubmit form")
     var params = { username: user.usr, password: user.pw};
-    axios
-      .post(url.login, params)
-      .then(res => {
-        console.log("Res recived")
-        if (res.data.success === true) {
+    console.log("Sending this",params)
+    var headerToken= {
+      method:"post",
+      'headers': {
+        'Authorization': 'Bearer '+ localStorage.token
+      }}
+      console.log("header token is ",headerToken)
+    fetch(url.hello, headerToken)
+      .then((res) => {
+        console.log("Res recived",res)
+        
           localStorage.token = res.data.token;
+          localStorage.tokenType = res.data.tokenType
           localStorage.isAuthenticated = true;
-          window.location.reload();
-        } else {
+          console.log("Token type",localStorage.tokenType,localStorage.token)
+          // window.location.reload();
+          
+        
           console.log("Res recived erro")
           this.setState({
             errors: { message: res.data.message }
           });
-        }
+          this.props.history.push('/')
+        
       })
       .catch(err => {
+        this.props.history.push('/')
         console.log("Sign up data submit error: ", err);
       });
   }
@@ -79,8 +90,9 @@ class LoginContainer extends Component {
       this.setState({
         errors: {}
       });
+      console.log("Seting user state as",this.state)
       var user = {
-        usr: this.state.user.username,
+        usr: this.state.user.email,
         pw: this.state.user.password,
       };
       this.submitLogin(user);
@@ -96,9 +108,11 @@ class LoginContainer extends Component {
 
 
   render() {
+    console.log("props are",this.props)
     return (
       <div>
         <LoginForm
+        {...this.props}
           onSubmit={this.validateForm}
           onChange={this.handleChange}
           onPwChange={this.pwHandleChange}

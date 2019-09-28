@@ -63,7 +63,6 @@ const validateLoginForm = payload => {
   }
 
 
-
   if (
     !payload ||
     typeof payload.password !== "string" ||
